@@ -93,6 +93,10 @@ body {
 
 /* About Me Section */
 
+.two-way-align {
+    text-align: justify;
+  }
+
 /* Skills Section */
 .skills-container {
     display: flex;
@@ -120,6 +124,17 @@ body {
     align-items: center;
     margin-bottom: 2rem;
     gap: 1rem;
+}
+
+.skill-header i {
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.skill-header h3 {
+    margin: 0;
+    font-size: 1.3rem;
+    color: var(--text-color);
 }
 
 .skill-items {
@@ -153,7 +168,6 @@ body {
     background: var(--primary-color);
     border-radius: 3px;
     transition: width 1s ease-in-out;
-    will-change: width;
 }
 
 /* Footer */
@@ -253,7 +267,7 @@ body {
     --card-bg: #ffffff;
     --navbar-bg: #f8f9fa;
     --section-bg: #f8f9fa;
-    --primary-color: #2A9D8F;
+    --primary-color: #6c63ff;
     --primary-hover: #837dff;
     --primary-light: #f0efff;
     --primary-color-rgb: 108, 99, 255;
@@ -865,14 +879,14 @@ h3,
     margin: 0;
 }
 
-.carousel-container .carousel-wrapper {
+.carousel-wrapper {
     display: flex;
     transition: transform 0.5s ease;
-    gap: 0.3rem;
+    gap: 2rem;
     cursor: grab;
 }
 
-.carousel-container .carousel-wrapper:active {
+.carousel-wrapper:active {
     cursor: grabbing;
 }
 
@@ -1133,7 +1147,7 @@ h3,
     display: flex;
     transition: transform 0.5s ease;
     gap: 0.3rem;
-    /* Projects kartları arası boşluk */
+    /* Projects kartlarÄ± arasÄ± boÅŸluk */
     cursor: grab;
 }
 
@@ -1205,9 +1219,9 @@ h3,
 
 .certificates-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 sütun varsayılan */
+    grid-template-columns: repeat(4, 1fr); /* 4 sÃ¼tun varsayÄ±lan */
     gap: 1rem;
-    width: 100%; /* Genişlik %100 */
+    width: 100%; /* GeniÅŸlik %100 */
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -1215,19 +1229,19 @@ h3,
 /* Responsive breakpoints */
 @media (max-width: 1200px) {
     .certificates-grid {
-        grid-template-columns: repeat(3, 1fr); /* 3 sütun 1200px altında */
+        grid-template-columns: repeat(3, 1fr); /* 3 sÃ¼tun 1200px altÄ±nda */
     }
 }
 
 @media (max-width: 900px) {
     .certificates-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 sütun 900px altında */
+        grid-template-columns: repeat(2, 1fr); /* 2 sÃ¼tun 900px altÄ±nda */
     }
 }
 
 @media (max-width: 600px) {
     .certificates-grid {
-        grid-template-columns: 1fr; /* 1 sütun 600px altında */
+        grid-template-columns: 1fr; /* 1 sÃ¼tun 600px altÄ±nda */
     }
 }
 
@@ -1235,96 +1249,77 @@ h3,
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease-in-out; /* Yumuşak geçiş efekti */
+    transition: transform 0.3s ease-in-out; /* YumuÅŸak geÃ§iÅŸ efekti */
     cursor: pointer;
 }
 
 .certificate-item:hover {
-    transform: scale(1.05); /* Hover sırasında büyüme */
+    transform: scale(1.05); /* Hover sÄ±rasÄ±nda bÃ¼yÃ¼me */
 }
 
 .certificate-item img {
-    width: 250px; 
-    height: 250px; 
-    object-fit: contain; /* Görsellerin taşmaması */
-}
-
-/* Mobilde daha iyi dokunma deneyimi */
-@media (max-width: 768px) {
-  .carousel-button {
-    display: none; 
-  }
-  .carousel-wrapper {
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch;
-  }
-  .hero-section h1 {
-    font-size: 2.5rem; 
-  }
+    width: 250px; /* SertifikalarÄ±n geniÅŸliÄŸi sabit */
+    height: 250px; /* SertifikalarÄ±n yÃ¼ksekliÄŸi sabit */
+    object-fit: contain; /* GÃ¶rsellerin taÅŸmamasÄ± */
 }
 
 
 
 
+/* ====================================
+   OVERRIDE: Sertifikalar için yeni tasarım
+   ==================================== */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* === Certificates Grid Genel Ayarlar === */
-.certificates-grid {
+/* Eski image tabanlı .certificate-item'ı etkisiz bırakmak için: */
+.certificate-item img {
+    display: none !important; /* Artık logo/görsel kullanmıyoruz, sakla */
+  }
+  
+  /* Sertifika Grid yapısını koru ama metin tabanlı tasarıma geç */
+  .certificates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
     padding: 1rem;
     box-sizing: border-box;
   }
   
-  /* === Her bir sertifika kartı === */
+  /* Her bir sertifika kartı, yatayda başlık/kurum + buton şeklinde */
   .certificate-item {
     display: flex;
-    flex-direction: row;        /* Yatayda başlık/kurum ve buton yanyana dursun */
+    flex-direction: row; /* Kartın içinde başlık/kurum solda, buton sağda */
     align-items: center;
     justify-content: space-between;
     background-color: var(--card-bg);
     border-radius: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    padding: 1.5rem 1.5rem;
+    padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
   }
   
+  /* Hover efekti */
   .certificate-item:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 20px rgba(var(--primary-color-rgb), 0.1);
   }
   
-  /* Başlık ve kurum bilgisi alanını tek blokta tutmak istersen: */
-  .certificate-item .certificate-title {
+  /* Başlık ve kurum bilgisi */
+  .certificate-title {
     font-size: 1.1rem;
     margin: 0 0 0.2rem 0;
     color: var(--text-color);
     font-weight: 600;
   }
   
-  .certificate-item .certificate-provider {
+  .certificate-provider {
     font-size: 0.9rem;
     margin: 0;
     color: var(--text-color);
     opacity: 0.8;
   }
   
-  /* Sertifika görüntüleme butonu */
+  /* "View" butonu */
   .cert-link {
     display: inline-block;
     padding: 0.5rem 1.2rem;
@@ -1334,39 +1329,22 @@ h3,
     text-decoration: none;
     transition: background-color 0.3s ease;
     font-size: 0.9rem;
-    margin-left: 1rem; /* Başlık/kurum bilgisinden biraz ayrışması için */
+    margin-left: 1rem; /* Soldan hafif boşluk */
   }
   
   .cert-link:hover {
     background-color: var(--primary-hover);
   }
   
-  /* Mobilde dikey hizalama istersen, 600px altı cihazda row yerine column yap */
+  /* Mobilde dikey hizalama */
   @media (max-width: 600px) {
     .certificate-item {
-      flex-direction: column;
-      align-items: flex-start;
+      flex-direction: column;   /* Alt alta diz */
+      align-items: flex-start; 
       gap: 0.5rem;
     }
     .cert-link {
-      margin-left: 0;  
+      margin-left: 0; 
     }
   }
-
-@media (max-width: 576px) {
-  /* Kartların genişliğini mobilde küçült */
-  .skill-category,
-  .project-card,
-  .blog-card {
-    width: 250px !important;        /* 400px yerine 250px gibi daralt */
-    min-width: auto !important;    
-    margin: 1rem auto;
-  }
-
-  /* Yatay boşlukları azalt */
-  .carousel-wrapper {
-    gap: 1rem !important;
-  }
-}
-
   
