@@ -1354,21 +1354,18 @@ h3,
   }
 
 @media (max-width: 576px) {
-  
-  .carousel-wrapper {
-    display: block !important;        
-    overflow-x: visible !important;   
-    gap: 0 !important;
-  }
-
-  /* Kartlar tam genişlik kaplasın */
+  /* Kartların genişliğini mobilde küçült */
   .skill-category,
   .project-card,
   .blog-card {
-    width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 0 1.5rem 0;
-    padding: 1rem;
+    width: 250px !important;        /* 400px yerine 250px gibi daralt */
+    min-width: auto !important;    
+    margin: 1rem auto;
+  }
+
+  /* Yatay boşlukları azalt */
+  .carousel-wrapper {
+    gap: 1rem !important;
   }
 }
 
